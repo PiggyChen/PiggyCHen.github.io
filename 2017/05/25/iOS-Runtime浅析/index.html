@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="做iOS开发的同学，必定都有接触到Runtime相关的知识。最近经历过的几次面试，发现这也是面试官会问的一道面试题。这里讲讲对于Runtime的一些个人理解。">
-<meta name="keywords" content="iOS,Runtime">
+<meta name="description" content="Objective-C是基于C语言加入了面向对象特性和消息转发机制的动态语言，这意味着它不仅需要一个编译器，还需要runtime系统来动态创建类和对象，进行消息发送和转发。">
+<meta name="keywords" content="iOS,Objective-C,Runtime">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS Runtime浅析">
+<meta property="og:title" content="Objective-C runtime">
 <meta property="og:url" content="http://yoursite.com/2017/05/25/iOS-Runtime浅析/index.html">
 <meta property="og:site_name" content="PiggyCHen">
-<meta property="og:description" content="做iOS开发的同学，必定都有接触到Runtime相关的知识。最近经历过的几次面试，发现这也是面试官会问的一道面试题。这里讲讲对于Runtime的一些个人理解。">
-<meta property="og:updated_time" content="2017-05-25T12:11:05.000Z">
+<meta property="og:description" content="Objective-C是基于C语言加入了面向对象特性和消息转发机制的动态语言，这意味着它不仅需要一个编译器，还需要runtime系统来动态创建类和对象，进行消息发送和转发。">
+<meta property="og:updated_time" content="2017-05-26T02:36:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Runtime浅析">
-<meta name="twitter:description" content="做iOS开发的同学，必定都有接触到Runtime相关的知识。最近经历过的几次面试，发现这也是面试官会问的一道面试题。这里讲讲对于Runtime的一些个人理解。">
+<meta name="twitter:title" content="Objective-C runtime">
+<meta name="twitter:description" content="Objective-C是基于C语言加入了面向对象特性和消息转发机制的动态语言，这意味着它不仅需要一个编译器，还需要runtime系统来动态创建类和对象，进行消息发送和转发。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>iOS Runtime浅析 | PiggyCHen</title>
+<title>Objective-C runtime | PiggyCHen</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -200,7 +200,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      iOS Runtime浅析
+      Objective-C runtime
     </h1>
   
 
@@ -211,7 +211,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Runtime/">Runtime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Runtime/">Runtime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -221,8 +221,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>做iOS开发的同学，必定都有接触到Runtime相关的知识。最近经历过的几次面试，发现这也是面试官会问的一道面试题。这里讲讲对于Runtime的一些个人理解。</p>
+        <p>  Objective-C是基于C语言加入了面向对象特性和消息转发机制的动态语言，这意味着它不仅需要一个编译器，还需要runtime系统来动态创建类和对象，进行消息发送和转发。</p>
 <a id="more"></a> 
+<h3 id="什么是Runtime"><a href="#什么是Runtime" class="headerlink" title="什么是Runtime"></a>什么是Runtime</h3><pre><code>* 简单来说，runtime就是一组C语言的函数，我们写的代码在程序运行过程中都会被转化成runtime的C代码执行，例如`[target doSomething];`会被转化成`objc_msgSend(target, @selector(doSomething));`。
+
+* OC中一切都被设计成了对象，我们都知道一个类被初始化成一个实例，这个实例是一个对象。实际上一个类本质上也是一个对象，在runtime中用结构体表示。例如，类在runtime的结构体表示：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">struct objc_class &#123;</div><div class="line">    Class isa;//指针，顾名思义，表示是一个什么，</div><div class="line">    //实例的isa指向类对象，类对象的isa指向元类</div><div class="line"></div><div class="line">#if !__OBJC2__</div><div class="line">    Class super_class;  //指向父类</div><div class="line">    const char *name;  //类名</div><div class="line">    long version;</div><div class="line">    long info;</div><div class="line">    long instance_size</div><div class="line">    struct objc_ivar_list *ivars //成员变量列表</div><div class="line">    struct objc_method_list **methodLists; //方法列表</div><div class="line">    struct objc_cache *cache;//缓存，优化，调用过的方法存入缓存列表，下次调用先找缓存</div><div class="line">    struct objc_protocol_list *protocols //协议列表</div><div class="line">#endif</div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -249,7 +253,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是Runtime"><span class="toc-number">1.</span> <span class="toc-text">什么是Runtime</span></a></li></ol>
         
     </div>
     <style>
@@ -284,7 +288,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"iOS Runtime浅析　| PiggyCHen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Objective-C runtime　| PiggyCHen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -330,7 +334,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/iOS-Runtime浅析/">iOS Runtime浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/18/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Markdown语法介绍/">Markdown语法详解</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/iOS-Runtime浅析/">Objective-C runtime</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/18/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Markdown语法介绍/">Markdown语法详解</a></li></ul>
 
 
 
