@@ -241,7 +241,7 @@
 #### 标题4  
 ##### 标题5  
 ###### 标题6
-</code></pre><h3 id="链接和Email"><a href="#链接和Email" class="headerlink" title="链接和Email"></a>链接和Email</h3><p>用尖括号将 <strong>Email</strong> 或 <strong>地址</strong> 包裹，即可使地址可点击:<br><a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x70;&#105;&#x67;&#x67;&#121;&#x63;&#x68;&#101;&#x6e;&#x40;&#x68;&#111;&#x74;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#x70;&#105;&#x67;&#x67;&#121;&#x63;&#x68;&#101;&#x6e;&#x40;&#x68;&#111;&#x74;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>:  <code>&lt;piggychen@hotmail.com&gt;</code><br><a href="https://piggychen.github.io" target="_blank" rel="external">https://piggychen.github.io</a>:   <code>&lt;https://piggychen.github.io&gt;</code>  </p>
+</code></pre><h3 id="链接和Email"><a href="#链接和Email" class="headerlink" title="链接和Email"></a>链接和Email</h3><p>用尖括号将 <strong>Email</strong> 或 <strong>地址</strong> 包裹，即可使地址可点击:<br><a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#112;&#105;&#103;&#103;&#121;&#x63;&#104;&#x65;&#110;&#64;&#104;&#x6f;&#x74;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#112;&#105;&#103;&#103;&#121;&#x63;&#104;&#x65;&#110;&#64;&#104;&#x6f;&#x74;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>:  <code>&lt;piggychen@hotmail.com&gt;</code><br><a href="https://piggychen.github.io" target="_blank" rel="external">https://piggychen.github.io</a>:   <code>&lt;https://piggychen.github.io&gt;</code>  </p>
 <p>也可以实现点击链接文字跳转:<br><a href="https://piggychen.github.io" target="_blank" rel="external">点我跳转</a>:  <code>[点我跳转](https://piggychen.github.io)</code>  </p>
 <h3 id="引用格式"><a href="#引用格式" class="headerlink" title="引用格式"></a>引用格式</h3><p>有时在文本中引用了较长的url链接看起来会比较乱，或者想让所有的url链接放到一起，则可以使用以下这种格式:<br><a href="https://piggychen.github.io" target="_blank" rel="external">a link</a>: <code>[a link][arbitrary_id]</code>然后在该文件的任意位置键入：  </p>
 <p><code>[arbitrary_id]: https://piggychen.github.io</code>  </p>
@@ -426,24 +426,42 @@ Content Cell  | Content Cell
 
 
     
-      <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/23/Markdown语法介绍/" data-title="Markdown语法详解" data-url="http://yoursite.com/2017/01/23/Markdown语法介绍/"></div>
+        <section class="youyan" id="comments">
     <script>
-        var duoshuoQuery = {short_name:"piggychen"};
         var loadComment = function(){
             var d = document, s = d.createElement('script');
-            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            s.async = true; s.charset = 'UTF-8';
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2124288';
             (d.head || d.body).appendChild(s);
         }
-
-        
     </script>
     
-    <script> loadComment(); </script>
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
 
-</div>
+    <div id="uyan_frame"></div>
+</section>
     
 
 
