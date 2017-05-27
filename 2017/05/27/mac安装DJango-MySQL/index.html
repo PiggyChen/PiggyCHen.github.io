@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/27/mac安装DJango-MySQL/index.html">
 <meta property="og:site_name" content="PiggyCHen">
 <meta property="og:description" content="Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django">
-<meta property="og:updated_time" content="2017-05-27T09:56:38.000Z">
+<meta property="og:updated_time" content="2017-05-27T10:37:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac安装DJango+MySQL">
 <meta name="twitter:description" content="Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django">
@@ -243,7 +243,7 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip <span class="keyword">install</span> mysqlclient</div></pre></td></tr></table></figure>
 <p>进行mysqlclient的安装，会导致失败。所以，建议安装MySQL，直接到官网下载dmg文件，进行安装。</p>
 <p>2.电脑如果同时有通过 <strong>brew</strong> 命令和用 <strong>dmg文件</strong>安装过mysql，那么安装mysqlclient时，也会导致失败。这时候，必须再次通过brew命令卸载mysql：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>mysql</div></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span>uninstall mysql</div></pre></td></tr></table></figure>
 <p>这时候再安装mysqlclient就能成功了。</p>
 
       
