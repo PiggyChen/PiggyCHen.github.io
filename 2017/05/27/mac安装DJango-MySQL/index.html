@@ -34,7 +34,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/img/zhutou.png">
 
 
 
@@ -224,26 +224,26 @@
         <p>Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django</p>
 <a id="more"></a> 
 <h3 id="安装DJango"><a href="#安装DJango" class="headerlink" title="安装DJango"></a>安装DJango</h3><p>从 <a href="https://www.djangoproject.com/download/" target="_blank" rel="external"><strong>这里</strong></a>下载最新的版本：Django-1.11.1.tar.gz。然后解压安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar zxvf Django-1.11.1.tar.gz</div><div class="line">cd Django-1.11.1</div><div class="line">sudo python setup.py install</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">zxvf</span> <span class="selector-tag">Django-1</span><span class="selector-class">.11</span><span class="selector-class">.1</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line"><span class="selector-tag">cd</span> <span class="selector-tag">Django-1</span><span class="selector-class">.11</span><span class="selector-class">.1</span></div><div class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">python</span> <span class="selector-tag">setup</span><span class="selector-class">.py</span> <span class="selector-tag">install</span></div></pre></td></tr></table></figure>
 <p>安装成功后，创建DJango项目:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject HelloWorld</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin<span class="selector-class">.py</span> startproject HelloWorld</div></pre></td></tr></table></figure>
 <p>启动服务:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd HelloWorld # 切换到我们创建的项目</div><div class="line">$ python manage.py runserver</div><div class="line">……</div><div class="line">Starting development server at http://127.0.0.1:8000/</div><div class="line">Quit the server with CONTROL-C.</div></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd HelloWorld <span class="comment"># 切换到我们创建的项目</span></div><div class="line">$ python manage.py runserver</div><div class="line">……</div><div class="line">Starting development server <span class="keyword">at</span> <span class="keyword">http</span>://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>/</div><div class="line">Quit <span class="keyword">the</span> server <span class="keyword">with</span> CONTROL-C.</div></pre></td></tr></table></figure>
 <p>显示以上信息，说明项目已经启动，在浏览器输入<a href="http://127.0.0.1:8000" target="_blank" rel="external">http://127.0.0.1:8000</a>就可进行访问了。</p>
 <h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><p>1.下载MySQL</p>
 <p>访问MySQL的官网<a href="http://www.mysql.com/downloads/" target="_blank" rel="external">http://www.mysql.com/downloads/</a>,页面下方有个MySQL Community Edition (GPL)，点击<strong>Community (GPL) Downloads »</strong>进入下载页，选择对应的操作系统平台和dmg文件，进行下载就好了。<br>下载完，双击dmg进行安装，安装结束后，会出现如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-05-27T03:27:38.037069Z 1 [Note] A temporary password is generated for root@localhost: u.gnIYl_s3hc</div><div class="line">If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">2017-05-27T03</span>:<span class="number">27</span>:<span class="number">38.037069</span>Z <span class="number">1</span> [Note] A temporary password is generated for root<span class="variable">@localhost</span>: u.gnIYl_s3hc</div><div class="line">If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</div></pre></td></tr></table></figure>
 <p>上面有我们登陆数据库的root账号以及初始密码，记得先保存，后面登陆进行修改。</p>
 <p>2.下载MySQL Workbench</p>
 <p>MySQL Workbench提供可视化的数据库界面，访问<a href="https://dev.mysql.com/downloads/" target="_blank" rel="external">https://dev.mysql.com/downloads/</a> 在下面有一个MySQL Workbench(GUI Tool)的项，点击其下的DOWNLOAD即可进入下载界面。下载完成之后安装就非常简单，双击即可安装。安装完成之后我们在“应用程序”里面就能看到MySQL Workbench.app程序了。<br>启动MySQL Workbench.app程序,新建数据库链接，用上面安装MySQL的账号密码登陆。过一会儿，程序会提示你更新密码，修改root默认的初始密码为你自己的就好了。</p>
 <p>至此，就安装好了DJango和MySQL了。</p>
 <h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>1.最开始安装MySQL的时候，不是到MySQL的官网下载，而是直接使用brew命令进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mysql</div></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>mysql</div></pre></td></tr></table></figure>
 <p>但是这样子进行的安装，后续在使用DJango创建app时，会提示你要先安装mysqlclient，而继续执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install mysqlclient</div></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip <span class="keyword">install</span> mysqlclient</div></pre></td></tr></table></figure>
 <p>进行mysqlclient的安装，会导致失败。所以，建议安装MySQL，直接到官网下载dmg文件，进行安装。</p>
 <p>2.电脑如果同时有通过 <strong>brew</strong> 命令和用 <strong>dmg文件</strong>安装过mysql，那么安装mysqlclient时，也会导致失败。这时候，必须再次通过brew命令卸载mysql：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mysql</div></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>mysql</div></pre></td></tr></table></figure>
 <p>这时候再安装mysqlclient就能成功了。</p>
 
       
