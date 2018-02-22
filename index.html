@@ -183,6 +183,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-cocoapods-Podfile详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/02/22/cocoapods-Podfile详解/" class="article-date">
+      <time datetime="2018-02-22T08:56:44.000Z" itemprop="datePublished">2018-02-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/22/cocoapods-Podfile详解/">cocoapods+Podfile介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>在使用cocoapods开发中必使用到Podfile文件，Podfile文件详细描述了一个或多个工程中targets的依赖关系。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Podfile/">Podfile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocoapods/">cocoapods</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/02/22/cocoapods-Podfile详解/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-cocoapods基础安装命令" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -212,23 +277,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="1-安装最新版cocoapods"><a href="#1-安装最新版cocoapods" class="headerlink" title="1.安装最新版cocoapods"></a>1.安装最新版cocoapods</h2><p>sudo gem install cocoapods  或者  sudo gem update cocoapods<br>pod setup</p>
-<h2 id="2-替换仓库地址"><a href="#2-替换仓库地址" class="headerlink" title="2.替换仓库地址"></a>2.替换仓库地址</h2><p>pod repo remove master<br>pod repo add master <a href="https://gitcafe.com/akuandev/Specs.git" target="_blank" rel="external">https://gitcafe.com/akuandev/Specs.git</a></p>
-<p>最新版cocoapods貌似还是会自动更新官方地址，无奈做了个投机取巧的办法：</p>
-<p>pod repo remove master<br>pod repo add master <a href="https://gitcafe.com/akuandev/Specs.git" target="_blank" rel="external">https://gitcafe.com/akuandev/Specs.git</a><br>cd ~/.cocoapods/repos/master<br>git remote rm origin<br>git remote add origin <a href="https://github.com/CocoaPods/SpecsCocoapods" target="_blank" rel="external">https://github.com/CocoaPods/SpecsCocoapods</a></p>
-<p>把远程仓库的地址改成官方的</p>
-<h2 id="3-安装指定cocoapods版本"><a href="#3-安装指定cocoapods版本" class="headerlink" title="3.安装指定cocoapods版本"></a>3.安装指定cocoapods版本</h2><p>sudo gem install cocoapods -v 0.39.0</p>
-<h2 id="4-查看cocoapods的版本"><a href="#4-查看cocoapods的版本" class="headerlink" title="4.查看cocoapods的版本"></a>4.查看cocoapods的版本</h2><p>pod –version</p>
-<h2 id="5-升级-gem"><a href="#5-升级-gem" class="headerlink" title="5.升级 gem"></a>5.升级 gem</h2><p>sudo gem update –system</p>
-<h2 id="6-一般安装完成之后我们都修改镜像源-修改成国内的-访问速度比较快"><a href="#6-一般安装完成之后我们都修改镜像源-修改成国内的-访问速度比较快" class="headerlink" title="6.一般安装完成之后我们都修改镜像源,修改成国内的,访问速度比较快"></a>6.一般安装完成之后我们都修改镜像源,修改成国内的,访问速度比较快</h2><p>//先删除<br>gem sources –remove <a href="https://rubygems.org/" target="_blank" rel="external">https://rubygems.org/</a></p>
-<p>//再添加淘宝,注意是https<br>gem sources -a <a href="https://ruby.taobao.org/" target="_blank" rel="external">https://ruby.taobao.org/</a></p>
-<h2 id="7-列出源"><a href="#7-列出源" class="headerlink" title="7.列出源"></a>7.列出源</h2><p>gem sources -l</p>
-<h2 id="8-卸载cocoapods"><a href="#8-卸载cocoapods" class="headerlink" title="8.卸载cocoapods"></a>8.卸载cocoapods</h2><p>sudo gem uninstall cocoapods</p>
-<p>//卸载指定的版本<br>sudo gem uninstall cocoapods -v 0.38.0</p>
-<h2 id="9-降级cocoapods，先卸载新版本，再安装旧版本"><a href="#9-降级cocoapods，先卸载新版本，再安装旧版本" class="headerlink" title="9.降级cocoapods，先卸载新版本，再安装旧版本"></a>9.降级cocoapods，先卸载新版本，再安装旧版本</h2><p>sudo gem uninstall cocoapods -v 1.0.0<br>sudo gem install cocoapods -v 0.38.0</p>
-<h2 id="10-查找某个库"><a href="#10-查找某个库" class="headerlink" title="10.查找某个库"></a>10.查找某个库</h2><p>pod search AFNetworking</p>
-<h2 id="11-安装依赖"><a href="#11-安装依赖" class="headerlink" title="11.安装依赖"></a>11.安装依赖</h2><p>pod install<br>//不更新本地索引<br>pod install –no-repo-update<br>//单独更新某一个依赖<br>pod update AFNetworking<br>//更新所有依赖,如果某个依赖已经是最新,则不再更新<br>pod update<br>//指定源地址,例如,指定为本地目录,这种一般用于将依赖库提前放到了本地,这样速度会快过很多<br>pod ‘AFNetworking’, path: ‘/Users/apple/Desktop/CodeStore/AFNetworking’</p>
-
+              <p>本篇文章介绍cocoapods安装相关的一些命令。</p>
+          
       
     </div>
     
@@ -241,6 +291,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocoapods/">cocoapods</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/02/22/cocoapods基础安装命令/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
